@@ -1,0 +1,62 @@
+{
+  "name": "MilkGuard – Smart Milk Quality Verification",
+  "short_name": "MilkGuard",
+  "description": "Multi-Sensor Milk Quality, Spoilage & Adulteration Verification Progressive Web App",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "categories": [
+    "utilities",
+    "productivity",
+    "agriculture"
+  ],
+  "icons": [
+    {
+      "src": "./pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Live Analysis",
+      "short_name": "Live Test",
+      "description": "Start real-time milk quality analysis",
+      "url": "./#/live",
+      "icons": [
+        {
+          "src": "./pwa-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Test History",
+      "short_name": "History",
+      "description": "View historical milk test records",
+      "url": "./#/history",
+      "icons": [
+        {
+          "src": "./pwa-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
