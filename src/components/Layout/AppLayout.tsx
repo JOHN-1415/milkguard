@@ -1,14 +1,17 @@
-
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
 import { BottomNav } from './BottomNav';
 import { NetworkStatusBar } from './NetworkStatusBar';
+import { HardwarePluginModal } from '../Hardware/HardwarePluginModal';
+import { useSimulation } from '../../context/SimulationContext';
 
 export const AppLayout: React.FC = () => {
+  const { isHardwareModalOpen, closeHardwareModal } = useSimulation();
+
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col selection:bg-emerald-500 selection:text-white">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col selection:bg-emerald-500 selection:text-white transition-colors duration-200">
       {/* Top network and simulation status bar */}
       <NetworkStatusBar />
 
@@ -29,6 +32,9 @@ export const AppLayout: React.FC = () => {
 
       {/* Mobile Bottom Navigation Bar */}
       <BottomNav />
+
+      {/* Hardware Plugin Connection Manager Modal */}
+      <HardwarePluginModal isOpen={isHardwareModalOpen} onClose={closeHardwareModal} />
     </div>
   );
 };

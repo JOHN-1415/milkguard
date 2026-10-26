@@ -13,9 +13,9 @@ export function formatTimestamp(isoString: string): { date: string; time: string
     const seconds = d.getSeconds().toString().padStart(2, '0');
 
     return {
-      date: `${day} ${month} ${year}`,
-      time: `${hours}:${minutes}`,
-      full: `${day} ${month} ${year}, ${hours}:${minutes}:${seconds}`
+      date: day + ' ' + month + ' ' + year,
+      time: hours + ':' + minutes,
+      full: day + ' ' + month + ' ' + year + ', ' + hours + ':' + minutes + ':' + seconds
     };
   } catch {
     return { date: 'Unknown', time: '--:--', full: isoString };
@@ -24,16 +24,23 @@ export function formatTimestamp(isoString: string): { date: string; time: string
 
 export function formatTemp(celsius: number, unit: 'C' | 'F' = 'C'): string {
   if (unit === 'F') {
-    return `${((celsius * 9) / 5 + 32).toFixed(1)} °F`;
+    return ((celsius * 9) / 5 + 32).toFixed(1) + ' °F';
   }
-  return `${celsius.toFixed(1)} °C`;
+  return celsius.toFixed(1) + ' °C';
 }
 
 export function formatConductivity(val: number, unit: 'mS/cm' | 'uS/cm' = 'mS/cm'): string {
   if (unit === 'uS/cm') {
-    return `${(val * 1000).toFixed(0)} µS/cm`;
+    return (val * 1000).toFixed(0) + ' µS/cm';
   }
-  return `${val.toFixed(2)} mS/cm`;
+  return val.toFixed(2) + ' mS/cm';
+}
+
+export function formatTurbidity(val: number, unit: 'NTU' | 'V' = 'NTU', voltage?: number): string {
+  if (unit === 'V' && voltage !== undefined) {
+    return voltage.toFixed(2) + ' V';
+  }
+  return Math.round(val) + ' NTU';
 }
 
 export function formatSensorValue(val: number, decimals = 1): string {

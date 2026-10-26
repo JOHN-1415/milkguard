@@ -213,6 +213,7 @@ class MockDatabase {
       name: t.testId,
       ph: t.sensors.ph,
       conductivity: t.sensors.conductivity,
+      turbidity: t.sensors.turbidity ?? 2450,
       mq137: t.sensors.mq137,
       score: t.result.qualityScore
     }));
@@ -298,7 +299,8 @@ class MockDatabase {
         mq137: Math.round(30 + (finalSensors.mq137 - 30) * factor + (Math.random() * 4 - 2)),
         ph: Number((7.0 - (7.0 - finalSensors.ph) * factor + (Math.random() * 0.04 - 0.02)).toFixed(2)),
         conductivity: Number((1.5 + (finalSensors.conductivity - 1.5) * factor + (Math.random() * 0.06 - 0.03)).toFixed(2)),
-        temperature: Number((22.0 + (finalSensors.temperature - 22.0) * factor).toFixed(1))
+        temperature: Number((22.0 + (finalSensors.temperature - 22.0) * factor).toFixed(1)),
+        turbidity: Math.round(1000 + ((finalSensors.turbidity ?? 2450) - 1000) * factor + (Math.random() * 20 - 10))
       });
     }
     return points;
